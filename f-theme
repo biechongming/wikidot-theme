@@ -1,0 +1,569 @@
+@charset "UTF-8";
+@import url("https://backrooms-f.wikidot.com/local--files/start/CSS.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+ 
+@media screen and (prefers-reduced-motion: no-preference) {
+    #page-title, #breadcrumbs, #page-content > * {
+      animation-name: fadeIn;
+      animation-duration: 1s;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-out;
+      animation-fill-mode: backwards;
+    }
+  }
+  #page-title { animation-delay: 0s; }
+ 
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translate(0,30px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(0,0);
+    }
+  }
+ 
+:root {
+    --fade-in-delay: 0.1s;
+    --theme-base: "black-highlighter";
+    --theme-id: "liminal";
+    --theme-name: "Liminal Theme";
+    --logo-image: url("http://backrooms-f.wikidot.com/local--files/start/wlogo");
+    --header-title: "The Backrooms-F";
+    --header-subtitle: "一切曾不应知之事";
+   --body-font: 'Roboto', sans-serif;
+   --header-font: 'Roboto', sans-serif;
+   --title-font: 'Roboto', sans-serif;
+   --base-font-size: 0.9rem;
+
+ 
+    --white-monochrome: 211, 211, 220;
+    --very-light-gray-monochrome: 237, 237, 237;
+    --pale-gray-monochrome: 237, 237, 237;
+    --light-gray-monochrome: 160, 160, 160;
+    --gray-monochrome: 60, 60, 60;
+    --dark-gray-monochrome: 70,70,70;
+    --black-monochrome: 40, 40, 40;
+    --bright-accent: 0, 75, 140;
+    --medium-accent: 100, 100, 100;
+    --dark-accent: 60, 60, 60;
+    --pale-accent: 140, 140, 140;
+    --swatch-topmenu-border-color: var(--medium-accent);
+    --link-color: var(--bright-accent);
+    --hover-link-color: 3,88,140;
+    --visited-link-color: 3,70,120;
+    --alt-accent:140,88,140;
+
+    --background-gradient-distance: 0rem;
+    --gradient-header: linear-gradient(to top,
+      rgba(var(--medium-accent),100) 0%,
+      rgba(var(--dark-accent),100) 100%
+   );
+     --diagonal-stripes: linear-gradient(transparent 0);
+}
+
+div#page-options-bottom > a,
+div#page-options-bottom-2 > a {
+    border-radius: 0em;
+}
+div#page-options-bottom > a, div#page-options-bottom > a:active, div#page-options-bottom > a:hover,
+div#page-options-bottom-2 > a,
+div#page-options-bottom-2 > a:active,
+div#page-options-bottom-2 > a:hover {
+    border: none;
+}
+ 
+#header,
+#top-bar {
+    background-attachment: scroll;
+}
+ 
+#header {
+    background-image: none;
+}
+#header::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-image: var(--logo-image);
+    background-size: auto 16rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+}
+#header h1,
+#header h1 a {
+    position: absolute;
+    top: 1rem;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+}
+#header h2,
+#header h2 span,
+#header h2 span::before {
+    position: absolute;
+    top: 2rem;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+ 
+#side-bar {
+    direction: rtl;
+    padding-left: 0;
+    top: 0;
+}
+#side-bar div.side-block {
+    direction: ltr;
+    border-right: var(--sidebar-internal-border-thickness) solid rgba(var(--swatch-border-color), 0.08);
+}
+#side-bar div.side-block,
+#side-bar div.side-block .heading {
+    margin-top: 0;
+}
+#side-bar div.side-block div.menu-item, #side-bar div.side-block div.menu-item > p {
+    display: flex;
+    flex-shrink: 0;
+    flex-basis: 100%;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+    height: 1.5rem;
+    min-height: 1.5rem;
+    margin: 0;
+    padding: 0;
+    box-shadow: inset 0 calc(var(--sidebar-internal-border-thickness) * -1) 0 0 rgba(var(--sidebar-border-color));
+    font-size: 0;
+}
+#side-bar div.side-block div.menu-item a {
+    justify-content: flex-start;
+    padding: 0 0 0 calc(var(--base-font-size) * 0.9333333333);
+}
+#side-bar div.side-block div.menu-item a::before {
+    left: 0;
+    transform: translateX(-100%);
+    width: calc(100% + 6rem);
+}
+#side-bar div.side-block div.menu-item a:not(a:first-child) {
+    border-left: var(--sidebar-internal-border-thickness) solid rgba(var(--swatch-border-color), 0.08);
+}
+#side-bar div.side-block div.menu-item a img {
+    filter: grayscale(100%);
+}
+#side-bar div.side-block div.menu-item.small a {
+    justify-content: center;
+    width: auto;
+    padding: 0 0.25em;
+    text-indent: 0;
+    white-space: nowrap;
+}
+#side-bar div.side-block div.menu-item > :last-child {
+    flex-grow: 2;
+}
+@media only screen and (max-width: 768px) {
+    #side-bar {
+        left: calc(var(--sidebar-width-on-mobile) * -1);
+    }
+    #side-bar:target, #skrollr-body:target #side-bar {
+        left: -0.5rem;
+    }
+    #side-bar .heading p,
+    #side-bar .side-block > .collapsible-block .collapsible-block-link {
+        letter-spacing: 0.016em;
+    }
+    #side-bar:target .close-menu, #skrollr-body:target #side-bar .close-menu {
+        margin-left: calc(var(--sidebar-width-on-mobile) - 0.5rem);
+        width: calc(100% - var(--sidebar-width-on-mobile) + 0.5rem);
+    }
+}
+ 
+div.scpnet-interwiki-wrapper {
+    margin: 0;
+    width: auto;
+}
+#side-bar div.scpnet-interwiki-wrapper {
+    min-height: 220px;
+    transform: translate(0, 0);
+}
+@media only screen and (max-width: 768px) {
+    #side-bar div.scpnet-interwiki-wrapper {
+        width: calc(var(--sidebar-width-on-mobile) - 0.5rem);
+        max-width: calc(80vw + var(--base-font-size) * 0.5);
+    }
+}
+@media only screen and (min-width: 768px) {
+    div.scpnet-interwiki-wrapper {
+        width: 100%;
+    }
+}
+ 
+/* Message on Delete/Rename/Move */
+#rename-option-rename::before,
+#rename-option-delete::before {
+    content: var(--rename-option);
+    color: rgb(211, 54, 120);
+    display: block;
+}
+ 
+/* Non SavingPage 黑标版 */
+iframe#odialog-shader-iframe {
+    display: none;
+}
+ 
+div#odialog-shader.odialog-shader {
+    display: block;
+    position: fixed;
+    z-index: 40;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    background-color: rgba(var(--swatch-menubg-black-color), 0.5);
+    pointer-events: none;
+    inset: 0 0 auto auto;
+}
+ 
+iframe.scpnet-interwiki-frame {
+    border: inherit;
+    width: 100%;
+    height: 220px;
+}
+ 
+a.newpage {
+    background: transparent;
+    text-decoration: none;
+    color: rgb(var(--newpage-color));
+}
+ 
+blockquote {
+    box-shadow: none;
+}
+ 
+.styled-quote {
+   background-color:rgb(var(--pale-gray-monochrome));
+   border-left: 0.5rem solid rgba(var(--gray-monochrome));
+   padding: 0.1rem 1rem;
+   margin: 0.5rem 0 0.5rem 0.25rem;
+   box-shadow: 0.05rem 0.1rem 0.3rem rgba(0,0,0,.25);
+}
+ 
+.dark-styled-quote {
+   background-color:rgb(var(--gray-monochrome));
+   border-left: 0.5rem solid rgba(var(--pale-gray-monochrome));
+   color:rgb(var(--white-monochrome));
+   padding: 0.1rem 1rem;
+   margin: 0.5rem 0 0.5rem 0.25rem;
+   box-shadow: 0.05rem 0.1rem 0.3rem rgba(0,0,0,.25);
+}
+ 
+.dark-styled-quote a{
+color: rgb(var(--swatch-menubg-medium-color));
+}
+ 
+.lightblock {
+   background-color:rgb(var(--pale-gray-monochrome));
+   padding: 0.01rem 1rem;
+   margin: 0.5rem 0 0.5rem 0.25rem;
+    color:rgb(var(--black-monochrome));
+   box-shadow: 0 0.2rem 0.3rem rgba(0,0,0,.25);
+}
+ 
+.darkblock {
+   background-color:rgb(var(--gray-monochrome));
+   color:rgb(var(--white-monochrome));
+   padding: 0.01rem 1rem;
+   margin: 0.5rem 0 0.5rem 0.25rem;
+   box-shadow: 0 0.2rem 0.3rem rgba(0,0,0,.25);
+}
+ 
+.darkblock a {
+color: rgb(var(--swatch-menubg-medium-color));
+}
+#side-bar div.menu-item a[href*="/scp-"]{
+text-align:left !important;
+width: auto !important;
+}
+ 
+.borderblock {
+    background-color:rgb(var(--pale-gray-monochrome));
+    padding: 0.01rem 1rem;
+    margin: 0.5rem 0 0.5rem 0.25rem;
+    color:rgb(var(--black-monochrome));
+    box-shadow: 0 0.2rem 0.3rem rgba(0,0,0,.25);
+    border: solid 0.3rem rgb(var(--gray-monochrome));
+ }
+ 
+.dark-borderblock {
+    background-color:rgb(var(--gray-monochrome));
+    color:rgb(var(--white-monochrome));
+    padding: 0.01rem 1rem;
+    margin: 0.5rem 0 0.5rem 0.25rem;
+    box-shadow: 0 0.2rem 0.3rem rgba(0,0,0,.25);
+    border: solid 0.3rem rgb(var(--white-monochrome));
+ }
+.dark-borderblock a {
+color: rgb(var(--swatch-menubg-medium-color));
+}
+ 
+.logoblock{
+    padding: 0.01rem 1rem;
+    box-shadow: 0 0.2rem 0.3rem rgba(0,0,0,.25);
+    margin: 0.5rem 0 0.5rem 0.25rem;
+    background-color: rgb(var(--pale-gray-monochrome));
+    color:rgb(var(--black-monochrome));
+    display: block;
+    position: relative;
+    }
+ 
+.logoblock::after{
+    content: "";
+    float: center;
+    background: url(http://scutoidbox.wikidot.com/local--files/front-page:footer/logo.png) center/25% no-repeat;
+    opacity: 0.25;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+}
+ 
+.dark-logoblock{
+    padding: 0.01rem 1rem;
+    box-shadow: 0 0.2rem 0.3rem rgba(0,0,0,.25);
+    margin: 0.5rem 0 0.5rem 0.25rem;
+    background-color: rgb(var(--gray-monochrome));
+    color:rgb(var(--pale-gray-monochrome));
+    display: block;
+    position: relative;
+    }
+ 
+.dark-logoblock::after{
+    content: "";
+    float: center;
+    background: url(http://backrooms-wiki.wikidot.com/local--files/component:theme/logo.svg) center/25% no-repeat;
+    opacity: 0.25;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+}
+.dark-logoblock a {
+color: rgb(var(--swatch-menubg-medium-color));
+}
+ 
+.glassblock {
+   background-image: linear-gradient(-30deg,
+      rgba(var(--white-monochrome),.8) -80%,
+      rgba(var(--bright-accent),.4) 100%);
+   border: solid rgb(var(--white-monochrome)) 2px;
+   padding: 0.01rem 1rem;
+   margin: 0.5rem 0 0.5rem 0rem;
+   box-shadow: 0 0.2rem 0.3rem rgba(0,0,0,.25);
+}
+ 
+.glassblock a {
+color: rgb(var(--swatch-menubg-medium-color));
+}
+
+.titleblock {
+        background-color: rgb(var(--white-monochrome));
+        color:rgb(var(--black-monochrome));
+        padding: 0.5rem 1rem 0.10rem;
+        margin: 1.5rem 0rem 0.5rem 0rem;
+        box-shadow: 0 0.2rem 0.3rem rgba(0,0,0,.5);
+        border: solid rgb(var(--bright-accent)) 2px;
+     }
+ 
+     .titlebox{
+       color: rgb(var(--very-light-gray-monochrome));
+       position: relative;
+       top: -1.6rem;
+       background-color: rgb(var(--bright-accent));
+       padding: 0.25rem 1rem;
+       line-height: 0.1rem;
+     }
+
+/* Content Warning */
+#page-content div#u-adult-warning {
+    width: fit-content;
+    margin: 0 auto 1.25rem;
+    padding: 0.5rem 1rem;
+    border: 3px solid #333;
+    background: #e4e4e4;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+}
+#page-content div#u-adult-warning > div#u-adult-header {
+    font-size: 300%;
+    text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+    color: #901;
+}
+#page-content div#u-adult-warning p {
+    margin: 0;
+}
+#page-content div#u-adult-warning > .error-block {
+    color: unset;
+    padding: unset;
+    margin: unset;
+    border: unset;
+    margin-bottom: 1em;
+}
+ 
+/* 去除用户信息中头像白边 */
+#odialog-container .owindow > div.modal-body > img[style*="padding: 2px 8px;"]:first-child {
+    background-color: initial !important;
+}
+ 
+/* Message on Delete/Rename/Move */
+#rename-option-rename::before,
+#rename-option-delete::before {
+    content: var(--rename-option);
+    color: red;
+    display: block;
+}
+ 
+/* 搜索框修改 */
+#search-top-box-input {
+    display: none;
+}
+ 
+@media only screen and (max-width: 768px) {
+    #search-top-box:not(:focus-within)::before {
+        top: calc(var(--header-height-on-mobile) / 2 + 0.5em);
+    }
+}
+/* Footer */
+#footer,
+#footer a {
+    color: rgb(var(--white-monochrome));
+}
+ 
+/* Image Block */
+.scp-image-block {
+    min-width: 30%;
+}
+ 
+/* License Box */
+#page-content .licensebox .collapsible-block-link {
+    margin-left: 0.25em;
+    padding: 0.25em;
+    font-weight: 700;
+    opacity: 0.5;
+    color: rgb(var(--gray-monochrome));
+    transition: opacity 0.5s ease-in-out;
+}
+#page-content .licensebox .collapsible-block-link:hover {
+    opacity: 1;
+}
+
+/* 底栏按钮放大 */
+#edit-cancel-button:hover,
+#edit-diff-button:hover,
+#edit-preview-button:hover,
+#edit-save-draft-button:hover,
+#edit-save-continue-button:hover,
+#edit-save-button:hover {
+  transition: transform 0.25s;  
+  transform: scale(1.1);  
+}
+
+#edit-button:hover,
+#pagerate-button:hover,
+#tags-button:hover,
+#history-button:hover,
+#files-button:hover,
+#print-button:hover,
+#site-tools-button:hover,
+#more-options-button:hover,
+#edit-sections-button:hover,
+#edit-append-button:hover,
+#edit-meta-button:hover,
+#watchers-button:hover,
+#backlinks-button:hover,
+#view-source-button:hover,
+#parent-page-button:hover,
+#page-block-button:hover,
+#rename-move-button:hover,
+#delete-button:hover,
+#discuss-button:hover
+ {
+  transition: transform 0.25s;  
+  transform: scale(1.1);  
+}
+
+.change-textarea-size:hover{
+  transition: transform 0.25s;  
+  transform: scale(1.1);  
+}
+
+/* 改进的saving page */
+.owindow {
+    background-color: rgba(var(--white-monochrome),0.8);
+    padding: 0.01rem 1rem;
+    margin: 0.5rem 0 0.5rem 0.25rem;
+    box-shadow: 0.1rem 0.1rem 0.2rem 0 rgba(var(--gray-monochrome),.6),inset 0rem 0rem 0.2rem 0 rgba(var(--gray-monochrome),.6);
+    border: 0.15rem solid rgba(var(--gray-monochrome));
+    border-radius: 0.3rem;
+    backdrop-filter: blur(1px);
+    color: rgb(var(--gray-monochrome));
+}
+
+.odialog-shader, .odialog-shader-iframe{
+    display:none;
+}
+.owindow.owait>.content.modal-body {
+font-size: 0px;
+}
+.owindow.owait:before {
+font-size: 18px;
+content:"您的修改正在保存中......";
+text-align: center;
+display:block;
+margin:12px 6px 0;
+}
+.owindow.owait .content {
+margin: 10px;
+padding: 0 50px 20px 50px;
+}
+
+/* 改进的标签 */
+:root {
+  --ptbo-bg: var(--swatch-primary-darkest);
+  --ptbo-br: var(--swatch-primary-darker);
+  --ptbo-tc: var(--swatch-text-secondary-color);
+  --ptbo-tt: "标签:";
+}
+#main-content .page-tags{
+  background-color: rgba(var(--ptbo-bg));
+  border-radius: 3px;
+  padding: 3px;
+  color: rgba(var(--ptbo-tc));
+  width: max-content;
+  height: max-content;
+  border: 2px solid rgba(var(--ptbo-br));
+}
+#main-content .page-tags span{
+  border-top: none;
+  font-size: 1em;
+}
+#main-content .page-tags span::before{
+  content: var(--ptbo-tt);
+  font-weight: bold;
+  font-size: 0.95em;
+}
+#main-content .page-tags span a{
+  color: rgba(var(--ptbo-tc));
+}
